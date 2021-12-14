@@ -1,0 +1,36 @@
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="header">
+        <h3>SIGN UP</h3>
+      </div>
+      <div>
+        <div class="content">
+          <div class="input-box">
+            <input type="text" #email style="color: black" placeholder=" " />
+            <span>username</span>
+            <span></span>
+          </div>
+          <div class="input-box">
+            <input
+              type="password"
+              #password
+              style="color: black"
+              placeholder=" "
+            />
+            <span>password</span>
+            <span></span>
+          </div>
+          <div class="input-box">
+            <ion-button (click)="singUp(email,password)">SIGN UP</ion-button>
+            <ion-button (click)="goToLogin()">Go to login</ion-button>
+
+            <div>
+              <a href="#">Forgot your password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

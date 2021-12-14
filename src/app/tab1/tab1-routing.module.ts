@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 

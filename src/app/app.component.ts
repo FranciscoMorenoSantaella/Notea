@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from './services/auth.service';
+import { LocalstorageService } from './services/localstorage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  private langsAviavble = ['es', 'en'];
+  constructor(
+    private traductor: TranslateService,
+    private storage: LocalstorageService,
+    private authS:AuthService
+  ) {
+    (async () => {
+      let lang = await storage.getItem('lang');
+      if (lang == null) {
+        lang = this.traductor.getBrowserLang();
+      }else{
+        lang=lang.lang;
+      }
+      if (this.langsAviavble.indexOf(lang) > -1) {
+        traductor.setDefaultLang(lang);
+      } else {
+        traductor.setDefaultLang('en');
+      }
+    })();
+  }
+
+  async ngOnInit(){
+    await this.authS.loadSession();
+  }
 }
